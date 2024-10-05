@@ -9,7 +9,7 @@ EXECUTABLES=("qss" "qsp" "mss" "msp" "bbs" "bbp" "reference")
 SIZES=(2500 5000 7500 10000 25000 50000 75000 100000 250000 500000 750000 1000000 2500000 5000000)
 
 # Array of thread counts to test for parallel versions
-THREAD_COUNTS=(2 4 8 16)
+THREAD_COUNTS=(2 4 8 16 32)
 
 # Fixed seed for reproducibility
 SEED=42
