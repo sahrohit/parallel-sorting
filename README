@@ -2,6 +2,8 @@
 
 This project implements several sorting algorithms in both serial and parallel versions using OpenMP.
 
+Submitted by Rohit Kumar Sah (800819633) & Atulesh Karna (800675898)
+
 ## Implementations
 
 1. Quick Sort
@@ -46,6 +48,12 @@ Example usage:
 ```
 
 This runs the serial quicksort implementation on 1,000,000 integers, using 4 threads (ignored in serial versions), with a random seed of 42.
+
+You can run all of them at once, and generate the runtime of each in a single file, but running the `run.sh` bash file. You can also tweak the input sizes, thread count and seed in the file as well. 
+
+```
+bash run.sh
+```
 
 ## Notes
 

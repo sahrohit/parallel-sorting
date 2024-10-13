@@ -1,12 +1,13 @@
 #!/bin/bash
 
+# Build All Executables
 make all
 
 # Array of executables to test
 EXECUTABLES=("qss" "qsp" "mss" "msp" "bbs" "bbp" "reference")
 
 # Array of input sizes to test
-SIZES=(2500 5000 7500 10000 25000 50000 75000 100000 250000 500000 750000 1000000 2500000 5000000)
+SIZES=(2500 5000 7500 10000 25000 50000 75000 100000 250000 500000)
 
 # Array of thread counts to test for parallel versions
 THREAD_COUNTS=(2 4 8 16 32)
@@ -64,30 +65,3 @@ awk -F',' '
             printf "%-10s Size: %-10s Avg Time: %f\n", parts[1], parts[2], sum[key]/count[key]
         }
     }' $OUTPUT_FILE
-
-# Optional: If you have gnuplot installed, create plots
-if command -v gnuplot &> /dev/null; then
-    echo -e "\nCreating plots..."
-    
-    # Create a gnuplot script
-    cat << EOF > plot_script.gnu
-    set terminal png size 800,600
-    set output 'runtime_comparison.png'
-    set title 'Sorting Algorithm Runtime Comparison'
-    set xlabel 'Input Size'
-    set ylabel 'Runtime (seconds)'
-    set key outside
-    set logscale x 10
-    set logscale y 10
-    
-    plot for [i=1:7] 'benchmark_results.csv' using 2:4 \
-        every ::1 index (i-1) \
-        with linespoints \
-        title columnheader(1)
-EOF
-
-    # Generate the plot
-    gnuplot plot_script.gnu
-    rm plot_script.gnu
-    echo "Plot saved as runtime_comparison.png"
-fi
